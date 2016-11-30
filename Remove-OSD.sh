@@ -52,9 +52,9 @@ echo
 ceph -s
 echo
 #
-echo --- IMPORTANT ---
-echo --- Once the Ceph cluster health is HEALTH_OK (ceph -s), please run:
-echo --- ceph auth del osd.$osd_id
-echo --- ceph osd rm osd.$osd_id
+echo "--- IMPORTANT ---";
+echo "--- Once the Ceph cluster health is HEALTH_OK (ceph -s), please run:";
+echo "--- ceph auth del osd.$osd_id";
+echo "--- ceph osd rm osd.$osd_id";
 echo
 #
