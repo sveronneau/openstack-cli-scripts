@@ -1,5 +1,7 @@
 #!/bin/bash
-# Restart Log and Metric Collector on controller node(s).
+# This script is for a FUEL based OpenStack deployment with Stacklight Plugins
+#
+# Restart Log and Metric Collector on the StackLight node(s).
 #
 echo --- Restarting Log and Metric Collector services
 #
