@@ -3,10 +3,17 @@
 #
 # Restart InfluxdB and Grafana services on all StackLight node(s).
 #
-echo --- Restarting Log and Metric Collector services
+clear
 #
-for node_num in $(fuel node list | grep ready | awk '/stacklight/ {print $1}'); do	 
-	ssh node-${node_num} "service influxdb restart"
-	ssh node-${node_num} "service grafana-server restart"
+echo
+echo --- Restarting InfluxdB and Grafana services
+#
+for node_name in $(fuel node list | grep ready | awk '/influxdb_grafana/ {print $5}'); do
+	echo
+	echo --- Node $node_name
+	ssh ${node_name} "service influxdb restart"
+	sleep 5s;
+	ssh ${node_name} "service grafana-server restart"
+	sleep 15;
 done
 #
