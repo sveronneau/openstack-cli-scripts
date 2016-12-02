@@ -4,7 +4,7 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
 ## Generic OpenStack scripts
 
 1. Disable-Compute.sh
-  1. Disable the services of selected nova-compute node and evacutes the instances (shared storage required).
+  1. Disable the services of selected nova-compute node and evacuates the instances (shared storage required).
   
 1. Enable-Compute.sh
   1. Re-Enable a nova-compute node.
@@ -27,7 +27,7 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
   1. Restart InfluxdB and Grafana services on all StackLight node(s).
 
 1. Add-Compute-Puppet-LMA.sh
-  1. Appplys a Puppet manifest on all Controller and Stacklight nodes.
+  1. Appplies a Puppet manifest on all Controller and Stacklight nodes.
   
 1. Change-All-Ceph-TCmalloc.sh
   1. Change the TCMALLOC value to 128MB on each Ceph OSD node.
