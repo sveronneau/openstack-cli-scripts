@@ -29,3 +29,9 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
 1. Add-Compute-Puppet-LMA.sh
   1. Appplys a Puppet manifest on all Controller and Stacklight nodes.
   
+1. Change-All-Ceph-TCmalloc.sh
+  1. Change the TCMALLOC value to 128MB on each Ceph OSD node.
+
+1. Change-Ceph-TCmalloc.sh
+  1. Change the TCMALLOC value to 128MB on a SPECIFIC Ceph OSD node.
+  
