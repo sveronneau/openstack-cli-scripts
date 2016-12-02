@@ -25,3 +25,7 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
 
 1. Restart-InfluxDB_Grafana.sh
   1. Restart InfluxdB and Grafana services on all StackLight node(s).
+
+1. Add-Compute-Puppet-LMA.sh
+  1. Appplys a Puppet manifest on all Controller and Stacklight nodes.
+  
