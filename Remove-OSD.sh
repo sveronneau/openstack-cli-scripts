@@ -8,23 +8,38 @@ echo --- Getting list of Hosts and OSDs
 echo
 ceph osd tree
 echo
-echo "Please enter the Ceph OSD ID you want to remove: "
-read osd_id
+echo "Please enter the Ceph Host Name you want to remove OSDs from: "
+read host_name
 #
 ###### Validate if node exist
 echo
-echo --- Validating OSD ID: $osd_id
+ok_host=$(ceph osd tree | grep -c $host_name | grep -v grep);
+if [ $ok_host = 0 ]; then
+	echo '*** Invalid Ceph Host name - Script will exit'
+	echo
+	exit
+fi
+#
+###### Showing list of OSDs for the selected Ceph Host (On Controller node)
+echo --- List of OSDs for Host: $host_name
 echo
-ok_osd=$(ceph osd tree | grep -c osd.$osd_id | grep -v grep);
-if [ $ok_osd = 0 ]; then
-	echo '*** Invalid OSD ID - Script will exit ***'
+ceph osd tree | awk '/'$host_name'/{flag=1;next}/storage/{flag=0}flag' | grep -v "rack"
+echo
+#
+echo
+echo "Please enter the Ceph OSD ID you want to remove: "
+read osd_id
+#
+###### Validate if OSD.id exist on Ceph Host
+echo
+ok_host_osd=$(ceph osd tree | awk '/'$host_name'/{flag=1;next}/storage/{flag=0}flag' | grep -c osd.$osd_id);
+if [ $ok_host_osd = 0 ]; then
+	echo '*** OSD ID '$osd_id' is not on Host '$host_name' - Script will exit'
 	echo
 	exit
 fi
 #
 ###### Remove OSD from Ceph cluster (On Controller node)
-echo --- OSD ID $osd_id valid.
-echo
 echo --- Removing OSD.$osd_id from Ceph cluster
 echo
 ceph osd out $osd_id
@@ -32,10 +47,9 @@ echo
 sleep 5s
 #
 ###### Stopping Ceph OSD (On Storage node)
-osd_host=$(ceph osd tree | awk '/host/{a=$0}/'osd.$osd_id'/ && a {print a;a=""}' | sed 's/.*host //');
-echo --- Stopping Ceph OSD.$osd_id on host $osd_host
+echo --- Stopping Ceph OSD.$osd_id on host $host_name
 echo
-ssh root@$osd_host "stop ceph-osd id=$osd_id";
+ssh root@$host_name "stop ceph-osd id=$osd_id";
 echo
 sleep 5s
 #
@@ -60,7 +74,7 @@ echo "--- Once the Ceph cluster as no more (recovery count or objects degraded p
 echo "------ ceph auth del osd.$osd_id";
 echo "------ ceph osd rm osd.$osd_id";
 echo
-echo "--- After all OSDs have been deleted the host $osd_host can be removed from the CRUSH map:";
-echo "------ ceph osd crush remove $osd_host";
+echo "--- After all OSDs have been deleted the host can be removed from the CRUSH map:";
+echo "------ ceph osd crush remove $host_name";
 echo
 #
