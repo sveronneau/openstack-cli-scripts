@@ -23,7 +23,7 @@ fi
 ###### Showing list of OSDs for the selected Ceph Host (On Controller node)
 echo --- List of OSDs for Host: $host_name
 echo
-ceph osd tree | awk '/'$host_name'/{flag=1;next}/storage/{flag=0}flag' | grep -v "rack"
+ceph osd tree | awk '/'$host_name'/{flag=1;next}/host/{flag=0}flag' | grep -v "rack"
 echo
 #
 echo
@@ -32,7 +32,7 @@ read osd_id
 #
 ###### Validate if OSD.id exist on Ceph Host
 echo
-ok_host_osd=$(ceph osd tree | awk '/'$host_name'/{flag=1;next}/storage/{flag=0}flag' | grep -c osd.$osd_id);
+ok_host_osd=$(ceph osd tree | awk '/'$host_name'/{flag=1;next}/host/{flag=0}flag' | grep -c osd.$osd_id);
 if [ $ok_host_osd = 0 ]; then
 	echo '*** OSD ID '$osd_id' is not on Host '$host_name' - Script will exit'
 	echo
