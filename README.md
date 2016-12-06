@@ -13,7 +13,10 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
   1. Remove a nova-compute node from nova services (execute after Disable-Compute.sh).
 
 1. Remove-OSD.sh
-  1. Remove a OSD from Ceph cluster.
+  1. Remove a OSD from a Ceph cluster.
+
+1. Remove-Ceph-Host.sh
+  1. Remove and delete all DOWN OSDs from a host then removes the host from the CRUCH Map.
   
 ## Mirantis OpenStack Specific Scripts
 
