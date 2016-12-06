@@ -61,20 +61,11 @@ echo
 sleep 5s
 #
 ###### Checking Ceph cluster health (On Controller node)
+echo --- Process done
+echo
+#
 echo --- Checking Ceph cluster health.
 echo
 ceph -s
-echo
-#
-echo "-----------------";
-echo "--- IMPORTANT ---";
-echo "-----------------";
-echo
-echo "--- Once the Ceph cluster as no more (recovery count or objects degraded percentage (ceph -s)), please run:";
-echo "------ ceph auth del osd.$osd_id";
-echo "------ ceph osd rm osd.$osd_id";
-echo
-echo "--- After all OSDs have been deleted the host can be removed from the CRUSH map:";
-echo "------ ceph osd crush remove $host_name";
 echo
 #
