@@ -15,6 +15,9 @@ Quick set of scripts for performing maintenance on a OpenStack deployment.
 1. Remove-OSD.sh
   1. Remove a OSD from a Ceph cluster.
 
+1. Remove-All-OSDs.sh
+  1. Remove all OSDs linked to a host in a Ceph cluster.
+
 1. Remove-Ceph-Host.sh
   1. Remove and delete all DOWN OSDs from a host then removes the host from the CRUCH Map.
   
