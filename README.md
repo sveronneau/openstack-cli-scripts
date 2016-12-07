@@ -1,5 +1,5 @@
 # openstack-cli-scripts
-Quick set of scripts for performing maintenance on a OpenStack deployment.
+The lazy but efficient OPS Guy set of scripts for performing maintenance on a OpenStack deployment. :)
 
 ## Generic OpenStack scripts
 
