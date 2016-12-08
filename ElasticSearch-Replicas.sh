@@ -6,6 +6,8 @@
 # ./ElasticSearch-Replicas.sh 2 0
 # - Changes the current value (2) to the new one (0)
 #
+# This script requires the jq package
+#
 ES=$(lsof -u elasticsearch -a -i:9200 -sTCP:LISTEN -nP -Fn | grep '^n' | cut -c2-)
 OLD_REPLICAS=$1
 NEW_REPLICAS=$2
