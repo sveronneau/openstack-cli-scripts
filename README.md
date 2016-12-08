@@ -23,21 +23,24 @@ The lazy but efficient OPS Guy set of scripts for performing maintenance on a Op
   
 ## Mirantis OpenStack Specific Scripts
 
-1. Restart-Collectors.sh
-  1. Restart the Log and Metric collectors on each OpenStack controllers
-  
 1. Change-VNC-Address.sh
   1. Change VNC address to public VIP in nova.conf on each nova-compute node.
-
-1. Restart-InfluxDB_Grafana.sh
+  
+1. Restart-Collectors.sh - StackLight
+  1. Restart the Log and Metric collectors on each OpenStack controllers
+  
+1. Restart-InfluxDB_Grafana.sh - StackLight
   1. Restart InfluxdB and Grafana services on all StackLight node(s).
 
-1. Add-Compute-Puppet-LMA.sh
+1. Add-Compute-Puppet-LMA.sh - StackLight
   1. Appplies a Puppet manifest on all Controller and Stacklight nodes.
   
-1. Change-All-Ceph-TCmalloc.sh
+1. ElasticSearch-Replicas.sh - StackLight
+  1. This script shows you your current ElasticSearch Index Replicas and also allows you to set new values.
+  
+1. Change-All-Ceph-TCmalloc.sh - Ceph
   1. Change the TCMALLOC value to 128MB on each Ceph OSD node.
 
-1. Change-Ceph-TCmalloc.sh
+1. Change-Ceph-TCmalloc.sh - Ceph
   1. Change the TCMALLOC value to 128MB on a SPECIFIC Ceph OSD node.
   
